@@ -14,7 +14,16 @@ class Tag extends Model
 
 
  
-     //relationships
+     //relationships with Program model
+        public function programs()
+        {
+            return $this->hasMany(Program::class);
+        }
+        //relationships with Event model
+        public function events()
+        {
+            return $this->hasMany(Event::class);
+        }
      
 
 }

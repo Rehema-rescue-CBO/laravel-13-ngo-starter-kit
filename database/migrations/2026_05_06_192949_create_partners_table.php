@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('role');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('website_url');
             $table->string('image_url');
             $table->longText('content');
             $table->timestamps();

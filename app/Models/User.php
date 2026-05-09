@@ -4,7 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Concerns\HasTeams;
-use Database\Factories\UserFactory;
+
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,4 +45,42 @@ class User extends Authenticatable
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
     }
+
+     // Define the relationship with the Program model
+     public function programs()
+     {
+         return $this->hasMany(Program::class); 
+     }
+        // Define the relationship with the Partner model
+        public function partners()
+        {
+            return $this->hasMany(Partner::class); 
+        }
+        // Define the relationship with the Volunteer model
+        public function volunteers()
+        {
+            return $this->hasMany(Volunteer::class);    
+        }
+        // Define the relationship with the Staff model
+        public function staff()
+        {
+            return $this->hasMany(Staff::class);
+        }
+// Define the relationship with the Blog model
+        public function blogs()
+        {
+            return $this->hasMany(Blog::class);    
+        }
+        // Define the relationship with the Event model
+        public function events()
+        {
+            return $this->hasMany(Event::class);    
+        }
+        // Define the relationship with the Team model
+
+
+
+
+
+
 }

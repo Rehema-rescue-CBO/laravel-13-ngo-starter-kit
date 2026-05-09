@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->foreignId('user_id')->references('users')->onDelete('cascade');
-            $table->foreignId('tag_id')->references('tags')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
             $table->string('image_url');
-             $table->longText('content');
+            $table->longText('content');
             $table->timestamps();
         });
     }
