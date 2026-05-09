@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->foreignId('user_id')->references('users')->onDelete('cascade');
+            $table->foreignId('tag_id')->references('tags')->onDelete('cascade');
+            $table->string('image_url');
+             $table->longText('content');
             $table->timestamps();
         });
     }

@@ -25,6 +25,12 @@
 //fields:
         - title
         - slug 
+          Schema::create('tags', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->timestamps();
+        });
 
 ## Tag Relationships
                  event - hasMany
@@ -34,6 +40,12 @@
 //fields:
         - title
         - slug 
+           Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->timestamps();
+        });
 
 ## Category  Relationships
                  event   - hasMany
@@ -52,14 +64,16 @@
         - slug.
         - image_url
         - tag_id
+
+
 ### Event Relationships:
                        user- hasmany
-                       event - BelongsTo 
+                       tag - hasMany 
 
 # 5. Programs/Projects Table 
 
 //Fields:
-        - program_title
+        - title
         - tag_id
         - user_id
         - slug 
@@ -103,13 +117,62 @@
           - program_id
           - event_id
 
+# 9. Staff
+
+//Fields:
+        - name 
+        - slug 
+        - role
+        - image_url
+        - content/bio
+
+# 10. Partners 
+  
+        //Fields:
+        - name 
+        - slug 
+        - role
+        - image_url
+        - content/bio
+
+# 11  Volunteers:
 
 
+        //Fields:
+        - name 
+        - slug 
+        - role
+        - image_url
+        - content/bio
+
+# 13 . publications:
+
+          Fields:
+          - title
+          - slug 
+          - image_url
+          - media_file // pdf,xls,docx..
+          - content 
+
+# 14 Campaign:
+
+           //Fields:
+           - Title
+           - slug
+           - image_url
+           - target_amount
+           - donated_amount
+           - expirely_date
+           - content
 
 
+#  15 Slider:
 
-
-
+            //Fields:
+            - title
+            - slug 
+            - description
+            - image_url
 
 
 

@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->string('time');
+            $table->string('location');
+            $table->foreignId('user_id')->references('users')->onDelete('cascade');
+            $table->foreignId('tag_id')->references('tags')->onDelete('cascade');
+            $table->string('image_url');
+            $table->longText('content');
+           
             $table->timestamps();
         });
     }
