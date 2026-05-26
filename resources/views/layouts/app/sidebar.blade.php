@@ -17,8 +17,11 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
-                    <flux:sidebar.item icon="home" :href="route('admin.categories.create')" :current="request()->routeIs('admin.categories.index')" wire:navigate>
+                    <flux:sidebar.item icon="home" :href="route('admin.categories.index')" :current="request()->routeIs('admin.categories.index')" wire:navigate>
                         {{ __('Categories') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="book-open" :href="route('admin.blogs.index')" :current="request()->routeIs('admin.categories.index')" wire:navigate>
+                        {{ __('Blogs') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
