@@ -39,7 +39,37 @@
             @endif
 
             {{-- Content --}}
-            <flux:textarea wire:model="content" :label="__('Content')" placeholder="Write your content here..." rows="10" />
+            <div class="space-y-2">
+                <flux:label>{{ __('Content') }}</flux:label>
+                <div
+                    wire:ignore
+                    x-data="{
+                        value: @entangle('content'),
+                        init() {
+                            const quill = new Quill($refs.quill, {
+                                theme: 'snow',
+                                modules: {
+                                    toolbar: [
+                                        ['bold', 'italic', 'underline', 'strike'],
+                                        [{ 'header': [1, 2, 3, false] }],
+                                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                        ['link', 'image', 'code-block'],
+                                        ['clean']
+                                    ]
+                                }
+                            });
+                            quill.root.innerHTML = this.value;
+                            quill.on('text-change', () => this.value = quill.root.innerHTML);
+                        }
+                    }"
+                    class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-700 overflow-hidden"
+                >
+                    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+                    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+                    <div x-ref="quill" class="min-h-[300px] !border-none text-zinc-900 dark:text-zinc-100"></div>
+                </div>
+                <flux:error name="content" />
+            </div>
 
             <div class="flex items-center gap-4">
                 <flux:button type="submit" variant="primary" color="blue" class="cursor-pointer">
