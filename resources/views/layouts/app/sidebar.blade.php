@@ -14,14 +14,21 @@
 
             <flux:sidebar.nav>
                 <flux:sidebar.group :heading="__('Platform')" class="grid">
+                    <!-- Dashboard link -->
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
+                    {{-- categories link --}}
                     <flux:sidebar.item icon="home" :href="route('admin.categories.index')" :current="request()->routeIs('admin.categories.index')" wire:navigate>
                         {{ __('Categories') }}
                     </flux:sidebar.item>
+                    {{-- blogs link--}}
                     <flux:sidebar.item icon="book-open" :href="route('admin.blogs.index')" :current="request()->routeIs('admin.categories.index')" wire:navigate>
                         {{ __('Blogs') }}
+                    </flux:sidebar.item>
+                    {{-- partners link --}}
+                    <flux:sidebar.item icon="user-plus" :href="route('admin.partners.index')" :current="request()->routeIs('admin.partners.index')" wire:navigate>
+                        {{ __('Partners') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>

@@ -15,3 +15,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::livewire('blog/create', 'blog.create')->name('admin.blogs.create');
     Route::livewire('blog/{blog}', 'blog.edit')->name('admin.blogs.edit');
 });
+
+/// Admin Routes partners
+Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::livewire('partners', 'partners.index')->name('admin.partners.index');
+    Route::livewire('partners/create', 'partners.create')->name('admin.partners.create');
+    Route::livewire('partners/{partner}', 'partners.edit')->name('admin.partners.edit');
+});
