@@ -30,6 +30,10 @@
                     <flux:sidebar.item icon="user-plus" :href="route('admin.partners.index')" :current="request()->routeIs('admin.partners.index')" wire:navigate>
                         {{ __('Partners') }}
                     </flux:sidebar.item>
+                    {{-- programs link--}}
+                    <flux:sidebar.item icon="play" :href="route('admin.programs.index')" :current="request()->routeIs('admin.programs.index')" wire:navigate>
+                        {{ __('Programs') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

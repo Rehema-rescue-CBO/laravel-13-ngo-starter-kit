@@ -22,3 +22,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::livewire('partners/create', 'partners.create')->name('admin.partners.create');
     Route::livewire('partners/{partner}', 'partners.edit')->name('admin.partners.edit');
 });
+/// Admin Routes programs
+Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::livewire('programs', 'programs.index')->name('admin.programs.index');
+    Route::livewire('programs/create', 'programs.create')->name('admin.programs.create');
+    Route::livewire('programs/{program}', 'programs.edit')->name('admin.programs.edit');
+});
