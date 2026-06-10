@@ -38,6 +38,12 @@
                     <flux:sidebar.item icon="tag" :href="route('admin.tags.index')" :current="request()->routeIs('admin.tags.index')" wire:navigate>
                         {{ __('Tags') }}
                     </flux:sidebar.item>
+
+                    {{-- events link--}}
+                    <flux:sidebar.item icon="calendar" :href="route('admin.events.index')" :current="request()->routeIs('admin.events.index')" wire:navigate>
+                        {{ __('Events') }}
+                    </flux:sidebar.item>    
+                    
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

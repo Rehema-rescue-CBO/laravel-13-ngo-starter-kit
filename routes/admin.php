@@ -34,3 +34,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::livewire('tags/create', 'tags.create')->name('admin.tags.create');
     Route::livewire('tags/{tag}', 'tags.edit')->name('admin.tags.edit');
 });
+
+/* admin routes for Events */
+Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::livewire('events', 'events.index')->name('admin.events.index');
+    Route::livewire('events/create', 'events.create')->name('admin.events.create');
+    Route::livewire('events/{event}', 'events.edit')->name('admin.events.edit');
+});
