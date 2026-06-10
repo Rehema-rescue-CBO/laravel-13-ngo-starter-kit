@@ -22,8 +22,8 @@ class Edit extends Component
     protected $rules = [
         'title' => 'required|min:3|max:255',
         'category_id' => 'required|exists:categories,id',
-        'image' => 'nullable|image|max:5120',
-        'content' => 'required|min:10',
+        'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
+        'content' => 'required',
     ];
 
     public function mount(Blog $blog)

@@ -17,8 +17,8 @@ class Create extends Component
         ]);
 
         Tag::create([
-            'name' => $this->name,
-            'slug' => Str::slug($this->name),
+            'title' => $this->title,
+            'slug' => Str::slug($this->title),
         ]);
 
         session()->flash('message', __('Tag created successfully.'));

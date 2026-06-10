@@ -60,7 +60,7 @@
                   {{$tag->id}}
                 </td>
                 <td class="px-6 py-4 text-sm text-gray-700 dark:text-gray-200">
-                   {{$tag->name }}
+                   {{$tag->title}}
                 </td>
                 <td class="px-6 py-4">
                     <div class="flex items-center justify-center gap-3">

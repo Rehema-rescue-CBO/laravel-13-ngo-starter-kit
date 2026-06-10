@@ -4,6 +4,7 @@ namespace App\Livewire\Programs;
 
 use App\Models\Program;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -20,7 +21,7 @@ class Create extends Component
     protected $rules = [
         'title' => 'required|string|max:255|unique:programs,title',
         'tag_id' => 'required|exists:tags,id',
-        'image' => 'required|image|max:5120', // 5MB Max
+        'image' => 'required|image|mimes:jpeg,jpg,png,webp|max:10240', // 10MB Max
         'content' => 'required|string',
     ];
 
@@ -34,13 +35,14 @@ class Create extends Component
             'title' => $this->title,
             'slug' => Str::slug($this->title),
             'tag_id' => $this->tag_id,
+            'user_id' => Auth::id(),
             'image_url' => $imagePath,
             'content' => $this->content,
         ]);
 
         session()->flash('message', __('Program created successfully.'));
 
-        return redirect()->route('admin.programs.index');
+        return $this->redirectRoute('admin.programs.index', navigate: true);
     }
 
     public function render()
