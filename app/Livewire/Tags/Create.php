@@ -8,12 +8,12 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $name = '';
+    public $title = '';
 
     public function save()
     {
         $this->validate([
-            'name' => 'required|string|max:255|unique:tags,name',
+            'title' => 'required|string|max:255|unique:tags,name',
         ]);
 
         Tag::create([

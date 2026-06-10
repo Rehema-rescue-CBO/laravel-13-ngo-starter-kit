@@ -35,7 +35,7 @@ class Index extends Component
 
         Blog::findOrFail($this->blogIdToDelete)->delete();
 
-        session()->flash('status', __('Blog deleted successfully.'));
+        session()->flash('danger', __('Blog deleted successfully.'));
 
         $this->closeDeleteModal();
         $this->resetPage();

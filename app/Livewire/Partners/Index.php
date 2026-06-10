@@ -23,7 +23,7 @@ class Index extends Component
     {
         if ($this->partnerIdBeingDeleted) {
             Partner::find($this->partnerIdBeingDeleted)?->delete();
-            session()->flash('message', __('Partner deleted successfully.'));
+            session()->flash('danger', __('Partner deleted successfully.'));
         }
 
         $this->dispatch('modal-hide', name: 'delete-partner');

@@ -23,7 +23,7 @@ class Index extends Component
     {
         if ($this->programIdBeingDeleted) {
             Program::find($this->programIdBeingDeleted)?->delete();
-            session()->flash('message', __('Program deleted successfully.'));
+            session()->flash('danger', __('Program deleted successfully.'));
         }
 
         $this->dispatch('modal-hide', name: 'delete-program');

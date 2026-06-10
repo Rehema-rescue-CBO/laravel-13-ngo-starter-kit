@@ -25,12 +25,7 @@
         </div>
     </div>
 
-    @if (session()->has('message'))
-        <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg flex items-center justify-between">
-            {{ session('message') }}
-            <button type="button" x-on:click="$el.parentElement.remove()" class="text-green-900 font-bold">&times;</button>
-        </div>
-    @endif
+   @include('layouts.errors.base')
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($programs as $program)
