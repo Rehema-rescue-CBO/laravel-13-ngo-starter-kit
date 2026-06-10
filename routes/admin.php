@@ -28,3 +28,9 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::livewire('programs/create', 'programs.create')->name('admin.programs.create');
     Route::livewire('programs/{program}', 'programs.edit')->name('admin.programs.edit');
 });
+/* admin routes for tags */
+Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::livewire('tags', 'tags.index')->name('admin.tags.index');
+    Route::livewire('tags/create', 'tags.create')->name('admin.tags.create');
+    Route::livewire('tags/{tag}', 'tags.edit')->name('admin.tags.edit');
+});

@@ -34,6 +34,10 @@
                     <flux:sidebar.item icon="play" :href="route('admin.programs.index')" :current="request()->routeIs('admin.programs.index')" wire:navigate>
                         {{ __('Programs') }}
                     </flux:sidebar.item>
+                    {{-- tags link--}}
+                    <flux:sidebar.item icon="tag" :href="route('admin.tags.index')" :current="request()->routeIs('admin.tags.index')" wire:navigate>
+                        {{ __('Tags') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
