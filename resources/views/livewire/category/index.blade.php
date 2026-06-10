@@ -19,12 +19,7 @@
     </header>
 
     <!-- Flash Messages -->
-    @if (session('status'))
-        <div class="mb-4 p-4 bg-green-100 border border-green-200 text-green-700 rounded-lg flex justify-between items-center">
-            <span>{{ session('status') }}</span>
-            <button type="button" x-on:click="$el.parentElement.remove()" class="text-green-900 font-bold">&times;</button>
-        </div>
-    @endif
+   @include('layouts.errors.base')
 
     <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div class="w-full max-w-md">

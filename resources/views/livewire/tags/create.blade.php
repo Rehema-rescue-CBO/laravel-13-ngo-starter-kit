@@ -8,14 +8,14 @@
         <form wire:submit="save" class="space-y-6">
             <flux:field>
                 <flux:label>{{ __('Tag Name') }}</flux:label>
-                <flux:input wire:model="name" placeholder="{{ __('e.g. Education, Health...') }}" autofocus />
-                <flux:error name="name" />
+                <flux:input wire:model="title" placeholder="{{ __('e.g. Education, Health...') }}" autofocus />
+                <flux:error name="title" />
             </flux:field>
 
             <div class="flex gap-2">
                 <flux:spacer />
                 <flux:button :href="route('admin.tags.index')" variant="ghost" wire:navigate>{{ __('Cancel') }}</flux:button>
-                <flux:button type="submit" variant="primary" color="blue">
+                <flux:button type="submit" variant="primary"  class="btn"  color="blue">
                     {{ __('Create Tag') }}
                 </flux:button>
             </div>

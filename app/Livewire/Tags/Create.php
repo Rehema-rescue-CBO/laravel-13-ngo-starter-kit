@@ -8,17 +8,17 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $name = '';
+    public $title = '';
 
     public function save()
     {
         $this->validate([
-            'name' => 'required|string|max:255|unique:tags,name',
+            'title' => 'required|string|max:255|unique:tags,name',
         ]);
 
         Tag::create([
-            'name' => $this->name,
-            'slug' => Str::slug($this->name),
+            'title' => $this->title,
+            'slug' => Str::slug($this->title),
         ]);
 
         session()->flash('message', __('Tag created successfully.'));

@@ -25,20 +25,15 @@
         </div>
     </div>
 
-    @if (session()->has('message'))
-        <div class="mb-4 p-4 bg-green-100 text-green-800 rounded-lg flex items-center justify-between">
-            {{ session('message') }}
-            <button type="button" x-on:click="$el.parentElement.remove()" class="text-green-900 font-bold">&times;</button>
-        </div>
-    @endif
+   @include('layouts.errors.base')
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($programs as $program)
             <div wire:key="{{ $program->id }}" class="bg-white dark:bg-zinc-900 rounded-lg shadow-md overflow-hidden flex flex-col">
-                <img src="{{ $program->image_url }}" alt="{{ $program->title }}" class="w-full h-48 object-cover">
+                <img src="{{ asset($program->image_url) }}" alt="{{ $program->title }}" class="w-full h-48 object-cover">
                 <div class="p-4 flex flex-col flex-1">
                     <h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200 mb-2">{{ $program->title }}</h3>
-                    <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 line-clamp-3">{{ $program->content }}</p>
+                  {{--   <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-4 line-clamp-3">{!! $program->content !!}</p> --}}
                     <div class="mt-auto flex gap-2">
                         <flux:button icon="pencil-square" :href="route('admin.programs.edit', $program)" variant="ghost" size="sm" wire:navigate class="cursor-pointer">
                             {{ __('Edit') }}

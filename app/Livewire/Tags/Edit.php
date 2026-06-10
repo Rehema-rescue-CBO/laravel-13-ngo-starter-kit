@@ -9,23 +9,23 @@ use Livewire\Component;
 class Edit extends Component
 {
     public Tag $tag;
-    public $name = '';
+    public $title = '';
 
     public function mount(Tag $tag)
     {
         $this->tag = $tag;
-        $this->name = $tag->name;
+        $this->title = $tag->title;
     }
 
     public function save()
     {
         $this->validate([
-            'name' => 'required|string|max:255|unique:tags,name,' . $this->tag->id,
+            'title' => 'required|string|max:255|unique:tags,name,' . $this->tag->id,
         ]);
 
         $this->tag->update([
-            'name' => $this->name,
-            'slug' => Str::slug($this->name),
+            'title' => $this->title,
+            'slug' => Str::slug($this->title),
         ]);
 
         session()->flash('message', __('Tag updated successfully.'));

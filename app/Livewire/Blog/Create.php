@@ -21,7 +21,7 @@ class Create extends Component
     protected $rules = [
         'title' => 'required|min:3|max:255',
         'category_id' => 'required|exists:categories,id',
-        'image' => 'required|image|max:5120', // 5MB Max
+        'image' => 'required|image|max:10240', // 10MB Max
         'content' => 'required|min:10',
     ];
 

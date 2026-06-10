@@ -41,7 +41,7 @@ class Index extends Component
 
         Category::findOrFail($this->categoryIdToDelete)->delete();
 
-        session()->flash('status', __('Category deleted successfully.'));
+        session()->flash('danger', __('Category deleted successfully.'));
 
         $this->closeDeleteModal();
         $this->resetPage(); // Reset pagination to ensure the deleted item is removed from the current page
