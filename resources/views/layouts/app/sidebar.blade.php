@@ -51,6 +51,10 @@
                     <flux:sidebar.item icon="users" :href="route('admin.staff.index')" :current="request()->routeIs('admin.staff.index')" wire:navigate>
                         {{ __('Staff') }}
                     </flux:sidebar.item>  
+                    {{-- testimonials link--}}
+                    <flux:sidebar.item icon="chat-bubble-left" :href="route('admin.testmonials.index')" :current="request()->routeIs('admin.testimonials.index')" wire:navigate>
+                        {{ __('Testimonials') }}
+                    </flux:sidebar.item>
                     
                 </flux:sidebar.group>
             </flux:sidebar.nav>

@@ -55,3 +55,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::livewire('staff/create', 'staff.create')->name('admin.staff.create');
     Route::livewire('staff/{staff}', 'staff.edit')->name('admin.staff.edit');
 });
+
+/* admin routes for testmonials */
+Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::livewire('testmonials', 'testmonials.index')->name('admin.testmonials.index');
+    Route::livewire('testmonials/create', 'testmonials.create')->name('admin.testmonials.create');
+    Route::livewire('testmonials/{testmonial}', 'testmonials.edit')->name('admin.testmonials.edit');
+});
