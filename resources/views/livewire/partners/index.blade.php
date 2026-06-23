@@ -1,8 +1,8 @@
 <div class="p-6">
-     <header class="mb-6 flex items-center justify-between">
+    <header class="mb-6 flex items-center justify-between">
         <div>
             <flux:heading size="xl">{{ __('Partners') }}</flux:heading>
-            <flux:subheading>{{ __('Manage your partners Details') }}</flux:subheading>
+            <flux:subheading>{{ __('Manage your partners and organizations.') }}</flux:subheading>
         </div>
 
         <flux:button :href="route('admin.partners.create')" variant="primary" color="blue" wire:navigate class="cursor-pointer">
@@ -10,32 +10,35 @@
         </flux:button>
     </header>
 
-    {{-- Search --}}
-    <div class="mb-4">
-        <div class="relative">
-            <input
-                type="text"
-                wire:model.live.debounce.300ms="search"
-                class="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
-                placeholder="{{ __('Search partners...') }}"
-            />
-            <div wire:loading wire:target="search" class="absolute right-3 top-2.5">
-                <svg class="h-4 w-4 animate-spin text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h   4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
+    <!-- Flash Messages -->
+    @include('layouts.errors.base')
+
+    <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div class="w-full max-w-md">
+            <div class="relative">
+                <flux:input wire:model.live.debounce.300ms="search" icon="magnifying-glass" :placeholder="__('Search partners...')" clearable />
+                <div wire:loading wire:target="search" class="absolute right-10 top-2.5">
+                    <flux:icon icon="arrow-path" class="h-4 w-4 animate-spin text-gray-400" />
+                </div>
             </div>
         </div>
-    </div>  
-   {{-- flash message  --}}
-   @include('layouts.errors.base')
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">      
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @forelse ($partners as $partner)
-            <div wire:key="{{ $partner->id }}" class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 flex flex-col items-center">
-                <img src="{{ $partner->image_url }}" alt="{{ $partner->name }} Logo" class="w-24 h-24 object-contain mb-4">
-                <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">{{ $partner->name }}</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">{{ $partner->content }}</p>
-                <div class="flex gap-2">
+            <flux:card wire:key="{{ $partner->id }}" class="flex flex-col items-center text-center p-6">
+                <img src="{{ asset('storage/' . $partner->image_url) }}" alt="{{ $partner->name }} Logo" class="w-20 h-20 object-contain mb-4 rounded">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">{{ $partner->name }}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                    <flux:badge color="blue">{{ $partner->role }}</flux:badge>
+                </p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{{ strip_tags($partner->content) }}</p>
+                @if ($partner->website_url)
+                    <a href="{{ $partner->website_url }}" target="_blank" class="text-sm text-blue-600 dark:text-blue-400 hover:underline mb-4">
+                        {{ __('Visit Website') }} →
+                    </a>
+                @endif
+                <div class="flex gap-2 mt-auto">
                     <flux:button icon="pencil-square" :href="route('admin.partners.edit', $partner)" variant="ghost" size="sm" wire:navigate class="cursor-pointer">
                         {{ __('Edit') }}
                     </flux:button>
@@ -43,9 +46,11 @@
                         {{ __('Delete') }}
                     </flux:button>
                 </div>
-            </div>
+            </flux:card>
         @empty
-            <p class="col-span-full text-center text-gray-500">{{ __('No partners found.') }}</p>
+            <div class="col-span-full text-center py-12">
+                <flux:subheading>{{ __('No partners found.') }}</flux:subheading>
+            </div>
         @endforelse
     </div>
 
@@ -61,15 +66,19 @@
 
             <div class="flex gap-2">
                 <flux:spacer />
+
                 <flux:modal.close>
                     <flux:button variant="ghost">{{ __('Cancel') }}</flux:button>
                 </flux:modal.close>
+
                 <flux:button type="submit" variant="primary" color="red">{{ __('Delete Partner') }}</flux:button>
             </div>
         </form>
     </flux:modal>
 
-    <div class="mt-6">
-        {{ $partners->links() }}
-    </div>  
+    @if ($partners->hasPages())
+        <div class="mt-6">
+            {{ $partners->links() }}
+        </div>
+    @endif
 </div>

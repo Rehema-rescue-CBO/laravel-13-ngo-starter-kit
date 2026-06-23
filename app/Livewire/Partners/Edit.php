@@ -3,8 +3,8 @@
 namespace App\Livewire\Partners;
 
 use App\Models\Partner;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -16,8 +16,16 @@ class Edit extends Component
     public $name = '';
     public $role = '';
     public $website_url = '';
-    public $image;
     public $content = '';
+    public $image;
+
+    protected $rules = [
+        'name' => 'required|min:3|max:255',
+        'role' => 'required|min:3|max:100',
+        'website_url' => 'required|url',
+        'content' => 'required|min:20',
+        'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:10240',
+    ];
 
     public function mount(Partner $partner)
     {
@@ -28,39 +36,32 @@ class Edit extends Component
         $this->content = $partner->content;
     }
 
-    protected function rules()
-    {
-        return [
-            'name' => 'required|string|max:255',
-            'role' => 'nullable|string|max:255',
-            'website_url' => 'required|url',
-            'image' => 'nullable|image|max:5120', // 5MB Max
-            'content' => 'required|string',
-        ];
-    }
-
-    public function save()
+    public function updatePartner()
     {
         $this->validate();
 
-        $data = [
-            'name' => $this->name,
-            'slug' => Str::slug($this->name),
-            'role' => $this->role,
-            'website_url' => $this->website_url,
-            'content' => $this->content,
-        ];
-
         if ($this->image) {
-            $path = $this->image->store('partners', 'public');
-            $data['image_url'] = Storage::url($path);
+            if ($this->partner->image_url) {
+                Storage::disk('public')->delete($this->partner->image_url);
+            }
+            $this->partner->image_url = $this->image->store('partners', 'public');
         }
 
-        $this->partner->update($data);
+        $this->partner->name = $this->name;
+        $this->partner->slug = Str::slug($this->name);
+        $this->partner->role = $this->role;
+        $this->partner->website_url = $this->website_url;
+        $this->partner->content = $this->content;
+        $this->partner->save();
 
-        session()->flash('message', __('Partner updated successfully.'));
+        session()->flash('status', __('Partner updated successfully.'));
 
-        return $this->redirect(route('admin.partners.index'), navigate: true);
+        return $this->redirectRoute('admin.partners.index', navigate: true);
+    }
+
+    public function removeImage()
+    {
+        $this->image = null;
     }
 
     public function render()

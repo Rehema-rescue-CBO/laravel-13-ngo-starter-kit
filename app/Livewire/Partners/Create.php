@@ -5,7 +5,6 @@ namespace App\Livewire\Partners;
 use App\Models\Partner;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -20,32 +19,32 @@ class Create extends Component
     public $content = '';
 
     protected $rules = [
-        'name' => 'required|string|max:255',
-        'role' => 'nullable|string|max:255',
+        'name' => 'required|min:3|max:255',
+        'role' => 'required|min:3|max:100',
         'website_url' => 'required|url',
-        'image' => 'required|image|max:5120', // 5MB Max
-        'content' => 'required|string',
+        'image' => 'required|image|max:10240',
+        'content' => 'required|min:20',
     ];
 
-    public function save()
+    public function savePartner()
     {
         $this->validate();
 
-        $path = $this->image->store('partners', 'public');
+        $imagePath = $this->image->store('partners', 'public');
 
         Partner::create([
             'name' => $this->name,
             'slug' => Str::slug($this->name),
-            'role' => 'partner',
+            'role' => $this->role,
             'website_url' => $this->website_url,
-            'image_url' => Storage::url($path),
+            'image_url' => $imagePath,
             'content' => $this->content,
             'user_id' => Auth::id(),
         ]);
 
-        session()->flash('message', __('Partner created successfully.'));
+        session()->flash('status', __('Partner created successfully.'));
 
-        return $this->redirect(route('admin.partners.index'), navigate: true);
+        return $this->redirectRoute('admin.partners.index', navigate: true);
     }
 
     public function render()
