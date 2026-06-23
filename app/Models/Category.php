@@ -19,5 +19,16 @@ class Category extends Model
     {
         return $this->hasMany(Blog::class);
     }
-    //
+    // Define the relationship with the Publication model
+    public function publications()
+    {
+        return $this->hasMany(Publication::class);
+    }
+
+
+
+
+
+
+
 }

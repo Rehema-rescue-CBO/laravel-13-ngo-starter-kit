@@ -78,6 +78,12 @@ class User extends Authenticatable
         }
         // Define the relationship with the Team model
 
+        // Define the relationship with the Publication model
+        public function publications()
+        {
+            return $this->hasMany(Publication::class);
+        }
+
 
 
 
