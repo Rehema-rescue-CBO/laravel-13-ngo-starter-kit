@@ -43,6 +43,10 @@
                     <flux:sidebar.item icon="calendar" :href="route('admin.events.index')" :current="request()->routeIs('admin.events.index')" wire:navigate>
                         {{ __('Events') }}
                     </flux:sidebar.item>    
+                    {{-- publications link--}}
+                    <flux:sidebar.item icon="book-open" :href="route('admin.publications.index')" :current="request()->routeIs('admin.publications.index')" wire:navigate>
+                        {{ __('Publications') }}
+                    </flux:sidebar.item>    
                     
                 </flux:sidebar.group>
             </flux:sidebar.nav>

@@ -43,4 +43,8 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
 });
 
 /* admin routes for  publications  */
-
+Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::livewire('publications', 'publications.index')->name('admin.publications.index');
+    Route::livewire('publications/create', 'publications.create')->name('admin.publications.create');
+    Route::livewire('publications/{publication}', 'publications.edit')->name('admin.publications.edit');
+});
