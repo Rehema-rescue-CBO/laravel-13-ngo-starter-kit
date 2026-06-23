@@ -41,3 +41,6 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::livewire('events/create', 'events.create')->name('admin.events.create');
     Route::livewire('events/{event}', 'events.edit')->name('admin.events.edit');
 });
+
+/* admin routes for  publications  */
+
