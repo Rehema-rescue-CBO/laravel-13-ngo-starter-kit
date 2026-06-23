@@ -46,7 +46,11 @@
                     {{-- publications link--}}
                     <flux:sidebar.item icon="book-open" :href="route('admin.publications.index')" :current="request()->routeIs('admin.publications.index')" wire:navigate>
                         {{ __('Publications') }}
-                    </flux:sidebar.item>    
+                    </flux:sidebar.item>  
+                    {{-- staff link--}}
+                    <flux:sidebar.item icon="users" :href="route('admin.staff.index')" :current="request()->routeIs('admin.staff.index')" wire:navigate>
+                        {{ __('Staff') }}
+                    </flux:sidebar.item>  
                     
                 </flux:sidebar.group>
             </flux:sidebar.nav>

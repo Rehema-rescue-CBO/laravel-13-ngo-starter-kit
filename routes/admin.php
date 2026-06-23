@@ -48,3 +48,10 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
     Route::livewire('publications/create', 'publications.create')->name('admin.publications.create');
     Route::livewire('publications/{publication}', 'publications.edit')->name('admin.publications.edit');
 });
+
+/* admin routes for staff */
+Route::prefix('admin')->middleware(['auth', 'verified'])->group(function () {
+    Route::livewire('staff', 'staff.index')->name('admin.staff.index');
+    Route::livewire('staff/create', 'staff.create')->name('admin.staff.create');
+    Route::livewire('staff/{staff}', 'staff.edit')->name('admin.staff.edit');
+});
