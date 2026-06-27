@@ -11,7 +11,7 @@
             </div>
         </div>
     @endif
-    {{-- end alert
+   
     @include('inc.aboutHome')
     @include('inc.slider')
 
@@ -24,11 +24,10 @@
     @include('inc.logo-slider')
     @include('inc.newsletter')
 
-    --}}
 
 
 
-  <style>
+  {{-- <style>
     *{
       margin:0;
       padding:0;
@@ -324,6 +323,6 @@
     </div>
 
   </div>
-
+ --}}
 
 @endsection
