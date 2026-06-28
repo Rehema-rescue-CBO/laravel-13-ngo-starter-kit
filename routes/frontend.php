@@ -39,4 +39,7 @@ Route::prefix('r')->group( function () {
      Route::get('recommendations-rehema-rescue-cbo', [HomeController::class, 'recommendations'])->name('recommendations');
      //publications
      Route::get('publications-rehema-rescue-cbo', [HomeController::class, 'publications'])->name('publications');
+     //blogs
+        Route::get('blogs-rehema-rescue-cbo', [HomeController::class, 'blogs'])->name('blogs');
+        Route::get('blogs-rehema-rescue-cbo/{blog:slug}', [HomeController::class, 'showBlog'])->name('blogs.show');
 });
