@@ -58,3 +58,14 @@ jobs:
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           protocol: ftp
           port: 21
+          exclude: |
+            storage/**
+            public/videos/**
+            public/banner/**
+            public/mentorship/**
+            public/partners/**
+            public/slider/**
+            public/team/**
+            public/testmonionals/**
+            public/sgvb/**
+            .env
