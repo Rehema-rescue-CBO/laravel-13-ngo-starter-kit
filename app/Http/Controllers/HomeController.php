@@ -138,8 +138,25 @@ class HomeController extends Controller
         $title = "Publications";
         return view('pages.publications', compact('title'));
     }
+    //blogs
+    public function blogs()
+    {
+        $title = "Blogs";
+        $blogs = \App\Models\Blog::latest()->paginate(10);
+        return view('pages.blogs', compact('title', 'blogs'));
+    }
 
+    //show single blog
+    public function showBlog(\App\Models\Blog $blog): \Illuminate\View\View
+    {
+        $title = $blog->title;
+        $recentBlogs = \App\Models\Blog::where('id', '!=', $blog->id)
+            ->latest()
+            ->take(3)
+            ->get();
 
+        return view('pages.blog-details', compact('title', 'blog', 'recentBlogs'));
+    }
 
     //end of class  
 }

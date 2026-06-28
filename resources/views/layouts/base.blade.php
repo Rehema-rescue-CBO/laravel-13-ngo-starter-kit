@@ -219,7 +219,8 @@ $config = [
                                 {{-- publications --}}
                                 <a href="{{ route('publications') }}" class="dropdown-item">Publications</a>
                                 <a href="{{ route('events') }}" class="dropdown-item">Events</a>
-
+                                   {{-- blogs --}}
+                                <a href="{{ route('blogs') }}" class="dropdown-item">Blogs</a>
                                 <a href="{{ route('beneficiaries') }}" class="dropdown-item">Testimonials</a>
                                 {{-- <a href="404.html" class="dropdown-item">News/Blog</a> --}}
                                 <a href="{{ route('privacy') }}" class="dropdown-item">Privacy Policy.</a>
