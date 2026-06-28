@@ -29,7 +29,20 @@ class HomeController extends Controller
     public function programs()
     {
         $title = "Our Programs";
-        return view('pages.programs', compact('title'));
+        $programs = \App\Models\Program::latest()->paginate(10);
+        return view('pages.programs', compact('title', 'programs'));
+    }
+
+    //show single program
+    public function showProgram(\App\Models\Program $program): \Illuminate\View\View
+    {
+        $title = $program->title;
+        $otherPrograms = \App\Models\Program::where('id', '!=', $program->id)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('pages.program-details', compact('title', 'program', 'otherPrograms'));
     }
     //Events
     public function events()
@@ -78,7 +91,8 @@ class HomeController extends Controller
     public function beneficiaries()
     {
         $title = "Beneficiaries";
-        return view('pages.beneficiaries', compact('title'));
+        $beneficiaries = \App\Models\Testmonial::latest()->paginate(10);
+        return view('pages.beneficiaries', compact('title', 'beneficiaries'));
     }
     //transparency
     public function transparency()
@@ -136,7 +150,8 @@ class HomeController extends Controller
     public function publications()
     {
         $title = "Publications";
-        return view('pages.publications', compact('title'));
+        $publications = \App\Models\Publication::latest()->paginate(10);
+        return view('pages.publications', compact('title', 'publications'));
     }
     //blogs
     public function blogs()
@@ -156,6 +171,18 @@ class HomeController extends Controller
             ->get();
 
         return view('pages.blog-details', compact('title', 'blog', 'recentBlogs'));
+    }
+
+    //show single testimonial
+    public function showTestimonial(\App\Models\Testmonial $testimonial): \Illuminate\View\View
+    {
+        $title = $testimonial->name;
+        $otherTestimonials = \App\Models\Testmonial::where('id', '!=', $testimonial->id)
+            ->latest()
+            ->take(3)
+            ->get();
+
+        return view('pages.testimonial-details', compact('title', 'testimonial', 'otherTestimonials'));
     }
 
     //end of class  

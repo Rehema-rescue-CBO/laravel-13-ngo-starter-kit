@@ -21,6 +21,7 @@ Route::prefix('r')->group( function () {
      Route::get('partners-rehema-rescue-cbo', [HomeController::class,'partners'])->name('partners');
      //programs
      Route::get('programs-rehema-rescue-cbo', [HomeController::class, 'programs'])->name('programs');
+     Route::get('programs-rehema-rescue-cbo/{program:slug}', [HomeController::class, 'showProgram'])->name('programs.show');
      //privacy
      Route::get('privacy-policy-rehema-rescue-cbo', [HomeController::class, 'privacy'])->name('privacy');
      //partner
@@ -42,4 +43,6 @@ Route::prefix('r')->group( function () {
      //blogs
         Route::get('blogs-rehema-rescue-cbo', [HomeController::class, 'blogs'])->name('blogs');
         Route::get('blogs-rehema-rescue-cbo/{blog:slug}', [HomeController::class, 'showBlog'])->name('blogs.show');
+        //testimonials
+        Route::get('testimonials-rehema-rescue-cbo/{testimonial:slug}', [HomeController::class, 'showTestimonial'])->name('testmonials.show');
 });
