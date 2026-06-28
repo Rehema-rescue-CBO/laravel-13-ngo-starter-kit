@@ -45,6 +45,7 @@ jobs:
         run: |
           rm -rf node_modules
           rm -rf tests
+          rm -rf vendor
           rm -rf .git
           rm -rf .github
 
@@ -56,12 +57,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           protocol: ftp
-          port: 21    
-     exclude: |
-      **/.git* 
-      **/.github/**
-      **/node_modules/**
-      **/vendor/**
-      **/tests/**
-      **/.env
-       
+          port: 21
