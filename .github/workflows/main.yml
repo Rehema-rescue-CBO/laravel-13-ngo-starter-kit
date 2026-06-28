@@ -48,6 +48,8 @@ jobs:
           rm -rf vendor
           rm -rf .git
           rm -rf .github
+          rm -rf .claude/agents/c.agent.md
+          rm -rf .cursor
 
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
