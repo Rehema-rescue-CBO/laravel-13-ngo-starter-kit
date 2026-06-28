@@ -51,25 +51,37 @@ jobs:
           rm -rf .claude/agents/c.agent.md
           rm -rf .cursor
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
-          protocol: ftp
-          port: 21
-          passive: false
-          timeout: 120000
-          exclude: |
-            storage/**
-            public/videos/**
-            public/banner/**
-            public/mentorship/**
-            public/partners/**
-            public/slider/**
-            public/team/**
-            public/testmonionals/**
-            public/sgvb/**
-            .env
+      - name: Deploy via FTP (active mode)
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+          lftp \
+            -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} \
+            ${{ secrets.FTP_SERVER }} \
+            -e "
+              set ftp:passive-mode no;
+              set ftp:ssl-allow no;
+              set net:timeout 120;
+              set net:max-retries 3;
+              set net:reconnect-interval-base 5;
+              mirror --reverse --verbose \
+                --exclude ^storage/ \
+                --exclude ^public/videos/ \
+                --exclude ^public/banner/ \
+                --exclude ^public/mentorship/ \
+                --exclude ^public/partners/ \
+                --exclude ^public/slider/ \
+                --exclude ^public/team/ \
+                --exclude ^public/testmonionals/ \
+                --exclude ^public/sgvb/ \
+                --exclude ^\.env$ \
+                --exclude ^node_modules/ \
+                --exclude ^tests/ \
+                --exclude ^vendor/ \
+                --exclude ^\.git/ \
+                --exclude ^\.github/ \
+                --exclude ^\.claude/ \
+                --exclude ^\.cursor/ \
+                --exclude ^bootstrap/cache/ \
+                . ${{ secrets.FTP_SERVER_DIR }};
+              quit;
+            "
