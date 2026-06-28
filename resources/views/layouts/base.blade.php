@@ -216,6 +216,8 @@ $config = [
                                 data-bs-toggle="dropdown">Resources</a>
                             <div class="dropdown-menu bg-light m-0">
                                 {{-- <a href="event.html" class="dropdown-item">Stories</a> --}}
+                                {{-- publications --}}
+                                <a href="{{ route('publications') }}" class="dropdown-item">Publications</a>
                                 <a href="{{ route('events') }}" class="dropdown-item">Events</a>
 
                                 <a href="{{ route('beneficiaries') }}" class="dropdown-item">Testimonials</a>
