@@ -58,6 +58,8 @@ jobs:
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           protocol: ftp
           port: 21
+          passive: false
+          timeout: 120000
           exclude: |
             storage/**
             public/videos/**
