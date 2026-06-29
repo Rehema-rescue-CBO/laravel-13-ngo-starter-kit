@@ -1,4 +1,13 @@
 <IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve storage files directly (fallback if storage:link symlink is not supported)
+    RewriteCond %{REQUEST_URI} ^/storage/(.*)$
+    RewriteRule ^storage/(.*)$ ../storage/app/public/$1 [L]
+
+</IfModule>
+
+
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
