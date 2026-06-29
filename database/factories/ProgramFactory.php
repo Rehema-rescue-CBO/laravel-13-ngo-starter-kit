@@ -18,7 +18,12 @@ class ProgramFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'title' => $this->faker->sentence(3),
+            'slug' => \Illuminate\Support\Str::slug($this->faker->sentence(3)),
+            'user_id' => \App\Models\User::factory(),
+            'tag_id' => \App\Models\Tag::factory(),
+            'image_url' => 'programs/' . $this->faker->word() . '.jpg',
+            'content' => $this->faker->paragraph(4),
         ];
     }
 }

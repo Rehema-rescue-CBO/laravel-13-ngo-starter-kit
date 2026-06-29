@@ -1,148 +1,175 @@
 @extends('layouts.base')
+
 @section('content')
     @include('layouts.pageheader')
+
+    <style>
+        .program-card {
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04) !important;
+            border: 1px solid rgba(0, 0, 0, 0.05) !important;
+            background: #ffffff;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 26, 195, 0.12) !important;
+            border-color: rgba(0, 26, 195, 0.15) !important;
+        }
+        
+        .program-img-container {
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .img-zoom {
+            transition: transform 0.5s ease;
+        }
+        
+        .program-card:hover .img-zoom {
+            transform: scale(1.06);
+        }
+        
+        .overlay-hover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 26, 195, 0) 50%, rgba(0, 26, 195, 0.15) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .program-card:hover .overlay-hover {
+            opacity: 1;
+        }
+        
+        .tag-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            color: #001ac3;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .program-card:hover .tag-badge {
+            background: #001ac3;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 26, 195, 0.2);
+        }
+        
+        .program-title {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        .hover-primary {
+            color: #333333;
+            transition: color 0.2s ease;
+        }
+        
+        .program-card:hover .hover-primary {
+            color: #001ac3;
+        }
+        
+        .hover-primary:hover {
+            color: #001ac3 !important;
+        }
+    </style>
 
     <!-- Programs Start -->
     <div class="container-xxl py-5">
         <div class="container">
             {{-- heading and subheading for Programs --}}
-            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 650px;">
                 <p class="section-title bg-white text-center text-primary px-3">Our Programs</p>
-                <h6 class="display-7 mb-5">Our program’s delivery and effectiveness are qualitatively and quantitatively
-                    assessed through
-                    structured beneficiary surveys, focus-group discussions, Key Informant Interviews (KIIs) with
-                    stakeholders, review of school and institutional records.</h6>
+                <h1 class="display-6 mb-3">Empowering Communities Through Impactful Initiatives</h1>
+                <p class="text-muted mb-5">
+                    Our program’s delivery and effectiveness are qualitatively and quantitatively assessed through structured beneficiary surveys, focus-group discussions, Key Informant Interviews (KIIs) with stakeholders, review of school and institutional records.
+                </p>
             </div>
 
-            <!-- Program 1: Image Left, Text Right -->
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('inc/graduation.png') }}" alt="Education Program"
-                            style="object-fit: cover;">
+            <div class="row g-4 justify-content-center">
+                @forelse ($programs as $program)
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ 0.1 * ($loop->index % 3 + 1) }}s">
+                        <div class="card h-100 border-0 shadow-sm program-card position-relative overflow-hidden">
+                            <!-- Tag Badge -->
+                            @if ($program->tag)
+                                <span class="tag-badge">
+                                    {{ $program->tag->title }}
+                                </span>
+                            @endif
+                            
+                            <!-- Program Image -->
+                            <div class="program-img-container" style="height: 240px;">
+                                <img src="{{ $program->image_url ? (str_starts_with($program->image_url, 'http') ? $program->image_url : asset('storage/' . $program->image_url)) : 'https://placehold.co/600x400?text=No+Image' }}" 
+                                     class="card-img-top w-100 h-100 img-zoom" 
+                                     alt="{{ $program->title }}"
+                                     style="object-fit: cover;">
+                                <div class="overlay-hover"></div>
+                            </div>
+
+                            <!-- Card Body -->
+                            <div class="card-body p-4 d-flex flex-column">
+                                <!-- Title -->
+                                <h4 class="card-title mb-3 program-title">
+                                    <a href="{{ route('programs.show', $program) }}" class="text-dark text-decoration-none hover-primary">
+                                        {{ $program->title }}
+                                    </a>
+                                </h4>
+
+                                <!-- Content -->
+                                <p class="card-text text-muted mb-4 flex-grow-1">
+                                    {{ \Illuminate\Support\Str::limit(strip_tags($program->content), 150) }}
+                                </p>
+
+                                <!-- Support Button -->
+                                <div class="mt-auto pt-2">
+                                    <a class="btn btn-primary w-100 py-2 px-4 rounded-pill" href="{{ route('getinvolved') }}">
+                                        Support Program
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h3 class="mb-3">Education & Mentorship</h3>
-                    <p class="mb-4">
-                        Since 2018, Out of 455 rescued individuals, 420 have been successfully enrolled back to school
-                        through Scholarships, Bursaries and Child Support Systems. A 92% success rate.
-                        Beneficiaries’ statistics;
-                        Primary education – 40 (8.79%)
-                        Secondary – 240 (52.75%).
-                        .</p>
-                    <a class="btn btn-primary py-2 px-4" href="{{ route('getinvolved') }}">Support Program</a>
-                </div>
+                @empty
+                    <div class="col-12 text-center py-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="mb-4">
+                            <i class="far fa-folder-open text-muted" style="font-size: 4rem;"></i>
+                        </div>
+                        <h3 class="text-dark">No Programs Added Yet</h3>
+                        <p class="text-muted">We are setting up our rescue programs. Please check back soon.</p>
+                    </div>
+                @endforelse
             </div>
 
-            <!-- Program 2: Text Left, Image Right -->
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('inc/Christmas.jpg') }}" alt="Health Program"
-                            style="object-fit: cover;">
-                    </div>
+            <!-- Pagination -->
+            @if ($programs->hasPages())
+                <div class="d-flex justify-content-center mt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    {{ $programs->links() }}
                 </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h3 class="mb-3">Health & Nutrition</h3>
-                    <p class="mb-4">
-                        Through feeding programs, food donations, hospital referral systems and medical aid, 415 lives
-                        have been directly impacted. With 72.3% being children aged below 12years.</p>
-                    <a class="btn btn-primary py-2 px-4" href="{{ route('getinvolved') }}">Support Program</a>
-                </div>
-            </div>
-            <!-- Program 3: Image Left, Text Right -->
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('sgvb/sgvb.jpg') }}" alt="Education Program"
-                            style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h3 class="mb-3">SGBV Awareness.</h3>
-                    <p class="mb-4">
-                        We raise awareness and respond to <span class="text-secondary">Sexual and Gender-based
-                            Violence</span> in the community through,
-                        educating, empowering and mobilizing to address and act effectively to causes, consequences and
-                        solutions.
-                        .</p>
-                    <a class="btn btn-primary py-2 px-4" href="{{ route('getinvolved') }}">Support Program</a>
-                </div>
-            </div>
-            <!-- Program 4: Text Left, Image Right -->
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('mentorship/hiv.jpg') }}"
-                            alt="Economic Empowerment Program" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h3 class="mb-3"> HIV/ AIDS.</h3>
-                    <p class="mb-4">
-
-                        As part of our efforts, sessions focused on empowering participants with accurate and practical
-                        prevention strategies, are held to encourage confidence and de-stigmatization in the community.
-                    </p>
-                    <a class="btn btn-primary py-2 px-4" href="{{ route('getinvolved') }}">Support Program</a>
-                </div>
-            </div>
-            <!-- Program 5: Image Left, Text Right -->
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('mentorship/Mentorship.jpg') }}"
-                            alt="Water Project Program" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h3 class="mb-3"> Empowerment and Mentorship.</h3>
-                    <p class="mb-4">
-
-                        Through guidance and counselling, supportive care and soft skills impartation on mentored
-                        individuals, 440 have widely benefited.
-                    </p>
-                    <a class="btn btn-primary py-2 px-4" href="{{ route('getinvolved') }}">Support Program</a>
-                </div>
-            </div>
-            <!-- Program 6: Text Left, Image Right -->
-            <div class="row g-5 align-items-center mb-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('mentorship/drug.jpg') }}"
-                            alt="Economic Empowerment Program" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <h3 class="mb-3"> Drugs and Substance Abuse..</h3>
-                    <p class="mb-4">
-
-
-                        Mental health considerations are paramount to all our beneficiaries. Since 2018, 124 of 174 addicts
-                        have successfully completed this program. Marking a 71.3% success in relation to enrollment.
-                    </p>
-                    <a class="btn btn-primary py-2 px-4" href="{{ route('getinvolved') }}">Support Program</a>
-                </div>
-            </div>
-                <!-- Program 7: Image Left, Text Right -->
-                <div class="col-lg-6 wow fadeInUp mt-5" data-wow-delay="0.1s">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('mentorship/skills.jpg') }}"
-                            alt="Water Project Program" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp mt-5" data-wow-delay="0.3s">
-                    <h3 class="mb-3"> Technical Skills Development.</h3>
-                    <p class="mb-4">
-                        Hosted successful career fairs (Gorgeous Institute) connecting youth with local businesses. With
-                        85% of participants showing great improvements in skills integration as per pre-post training
-                        assessment, 3 secured internships while 6 got job placements.
-                    </p>
-                    <a class="btn btn-primary py-2 px-4" href="{{ route('getinvolved') }}">Support Program</a>
-                </div>
-                <!-- Program 8: Text Left, Image Right -->
+            @endif
         </div>
-        <hr>
-        <!-- Programs End -->
-    @endsection
+    </div>
+    <hr>
+    <!-- Programs End -->
+@endsection
