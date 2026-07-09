@@ -11,15 +11,13 @@
             </div>
         </div>
     @endif
-   
+   @include('inc.slider')
     @include('inc.aboutHome')
-    @include('inc.slider')
-
 
     @include('inc.counter')
-    @include('inc.video')
-    @include('inc.beneficiaries')
+    {{-- @include('inc.video') --}}
     @include('inc.benif')
+    @include('inc.beneficiaries')
     @include('inc.banner')
     @include('inc.logo-slider')
     @include('inc.newsletter')

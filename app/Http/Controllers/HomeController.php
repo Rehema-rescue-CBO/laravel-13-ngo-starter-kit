@@ -12,7 +12,31 @@ class HomeController extends Controller
     public function index()
     {
         $title = "Home";
-        return view('pages.home', compact('title'));
+        $testmonials= \App\Models\Testmonial::latest()->take(3)->get();
+
+        $impactStats = [
+            [
+                'icon'  => 'fa-user-graduate',
+                'value' => 420,
+                'title' => 'Education & Enrollment',
+                'desc'  => 'Teens and youths successfully enrolled in schools and institutions of higher learning to secure their future.',
+            ],
+            [
+                'icon'  => 'fa-hand-holding-heart',
+                'value' => 71,
+                'suffix' => '%',
+                'title' => 'Rehabilitation & Reform',
+                'desc'  => 'Of enrolled addicts in our programs have successfully reformed and integrated back into society.',
+            ],
+            [
+                'icon'  => 'fa-comments',
+                'value' => 440,
+                'title' => 'Mentorship & Support',
+                'desc'  => 'Vulnerable individuals benefited through supportive care, direct guidance, and structured counselling.',
+            ],
+        ];
+
+        return view('pages.home', compact('title', 'testmonials', 'impactStats'));
     }
     //About
     public function about()

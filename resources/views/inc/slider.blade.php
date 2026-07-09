@@ -17,7 +17,7 @@
                           <h6 class="display-6 text-uppercase mb-3 text-secondary">Our Vision.</h6>
                           <p class="fs-5 mb-5">Inspire and Provide Lasting Solutions.</p>
                           <div class="d-flex" id="about">
-                              <a class="btn btn-primary py-3 px-4 me-3" href="#about-us">About Us</a>
+                              <a class="btn btn-primary py-3 px-4 me-3" href="{{ route('about') }}">About Us</a>
                           </div>
                       </div>
                   </div>

@@ -1,124 +1,204 @@
-<!-- What we do Start -->
-
-<div class="container-fluid py-5" id="what-we-do">
-    <div class="container">
-        <div class="what-we-do-section wow fadeIn" data-wow-delay="0.1s">
-            <div class="content-overlay">
-                <h1 class="display-6 mb-4 wow fadeIn text-white"    data-wow-delay="0.2s">What We Do.</h1>
-                <p class="mb-4 wow fadeIn text-white" data-wow-delay="0.3s" style="font-weight:600;">Child
-                    Protection and Advocacy, Education, Mental
-                    Health, Alcohol and Substance Abuse, Mentorship,
-                    Technical Skills Development, Health and Nutrition.</p>
-
-                <div class="d-flex mt-4 wow fadeIn" data-wow-delay="0.7s">
-                    <a class="btn btn-primary py-3 px-4 me-3" href="{{ route('getinvolved') }}">Get Involved</a>
-                 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- What we do End -->
-
-<!-- Our Impact Start -->
-<div class="container-xxl py-5">
-    <div class="container">
-
-
-                <div class="rounded overflow-hidden ">
-                    <div class="text-center mx-auto wow fadeInUp"  data-wow-delay="0.1s"
-                style="max-width: 500px;">
-                <h3 class="section-title bg-white text-center text-primary px-3">Our Impact</h3>
-            </div>
-                    <div class="row g-0">
-                        <div class="col-sm-6 wow fadeIn rounded" data-wow-delay="0.1s">
-                            <div class="text-center bg-primary py-5 px-4 h-100">
-                                <i class="fa fa-users fa-3x text-secondary mb-3"></i>
-                                <h1 class="display-5 mb-0" data-toggle="counter-up">420</h1>
-                                <span class="text-dark">
-                                    <h5 class="text-secondary">Education:</h5> <br> Teens and youths, successfully
-                                    enrolled
-                                    in
-                                    schools
-                                    and institutions of
-                                    higher learning.
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn rounded" data-wow-delay="0.3s">
-                            <div class="text-center bg-secondary py-5 px-4 h-100">
-                                <i class="fa fa-award fa-3x text-primary mb-3"></i>
-                                <h1 class="display-5 text-white mb-0" data-toggle="counter-up">85</h1>
-                                <span class="text-white">
-                                    <h5 class="text-secondary">Skills Development:</h5> <br>
-                                    85% of participants
-                                    show great
-                                    skills integration.
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn rounded" data-wow-delay="0.5s">
-                            <div class="text-center bg-secondary py-5 px-4 h-100">
-                                <i class="fa fa-list-check fa-3x text-primary mb-3"></i>
-                                <h1 class="display-5 text-white mb-0" data-toggle="counter-up">71</h1>
-                                <span class="text-white">
-                                    <h5 class="text-secondary">Drugs & Substance Abuse:</h5> <br>
-                                    71.3% of addicts enrolled , have successfully reformed.
-                                </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn rounded" data-wow-delay="0.7s">
-                            <div class="text-center bg-primary py-5 px-4 h-100">
-                                <i class="fa fa-comments fa-3x text-secondary mb-3"></i>
-                                <h1 class="display-5 mb-0" data-toggle="counter-up">440</h1>
-                                <span class="text-dark">
-                                    <h5 class="text-secondary">Mentorship:</h5> Through empowerment, supportive care,
-                                    guidance and
-                                    counselling, 440
-                                    individuals have benefited.
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </div>
-</div>
-<!-- Our Impact End -->
-
 <style>
-    .what-we-do-section {
-        position: relative;
-        background-image: url('{{ asset('inc/whatwedo.jpg') }}');
-        background-size: cover;
-        background-position: center;
-        border-radius: .5rem;
-        overflow: hidden;
-        min-height: 450px;
-        /* Ensure a minimum height for the section */
-    }
+    /* Attractive section background */
+.impact-section{
+    background: linear-gradient(135deg,#eef8ff 0%,#f8fbff 50%,#e9fff4 100%);
+    position: relative;
+    overflow: hidden;
+}
 
-    .content-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        /* Semi-transparent dark overlay */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        /* Center content vertically */
-        align-items: center;
-        /* Center content horizontally */
-        text-align: center;
-        /* Ensure text is centered */
-        padding: 2rem;
-        /* Padding for the content inside the overlay */
-    }
+.impact-section::before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    background:rgba(13,110,253,.08);
+    border-radius:50%;
+    top:-120px;
+    left:-120px;
+}
 
-    .rounded {
-        border-radius: .5rem !important;
-        overflow: hidden;
-    }
+.impact-section::after{
+    content:"";
+    position:absolute;
+    width:280px;
+    height:280px;
+    background:rgba(25,135,84,.08);
+    border-radius:50%;
+    bottom:-100px;
+    right:-100px;
+}
+
+/* Card */
+.impact-card{
+    position:relative;
+    background:#fff;
+    border-radius:18px;
+    padding:40px 25px;
+    height:100%;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:all .35s ease;
+    z-index:2;
+}
+
+.impact-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 45px rgba(13,110,253,.18);
+}
+
+/* Top border animation */
+.impact-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:0;
+    height:5px;
+    background:#0d6efd;
+    border-radius:10px;
+    transition:.4s;
+}
+
+.impact-card:hover::before{
+    width:100%;
+}
+
+/* Icon */
+.icon-box{
+    width:85px;
+    height:85px;
+    margin:0 auto 25px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:34px;
+    transition:.35s;
+}
+
+.impact-card:hover .icon-box{
+    transform:rotate(10deg) scale(1.1);
+}
+
+.counter{
+    font-size:3rem;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.impact-card p{
+    color:#6c757d;
+    line-height:1.8;
+    margin-bottom:0;
+    font-size:15px;
+}
 </style>
+
+
+
+
+<section class="impact-section py-5">
+    <div class="container">
+
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width:650px;">
+            <span class="text-primary fw-bold text-uppercase">Our Impact</span>
+            <h2 class="display-6 fw-bold mt-2">Changing Lives, Building Hope</h2>
+            <p class="text-muted">
+                Every number represents a life transformed through education, mentorship,
+                rehabilitation, and community empowerment.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Card -->
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="impact-card text-center">
+
+                    <div class="icon-box bg-primary">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+
+                    <h2 class="counter text-primary">
+                        <span data-toggle="counter-up">420</span>
+                    </h2>
+
+                    <p>
+                        Children, teens and young adults have been enrolled in schools
+                        and institutions of higher learning.
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="impact-card text-center">
+
+                    <div class="icon-box bg-success">
+                        <i class="fa fa-award"></i>
+                    </div>
+
+                    <h2 class="counter text-success">
+                        <span data-toggle="counter-up">85</span>%
+                    </h2>
+
+                    <p>
+                        Participants have successfully integrated vocational and life
+                        skills into their daily lives.
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="impact-card text-center">
+
+                    <div class="icon-box bg-warning">
+                        <i class="fa fa-heart"></i>
+                    </div>
+
+                    <h2 class="counter text-warning">
+                        <span data-toggle="counter-up">71</span>%
+                    </h2>
+
+                    <p>
+                        Individuals enrolled in our rehabilitation programmes have
+                        successfully overcome drug and substance abuse.
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="impact-card text-center">
+
+                    <div class="icon-box bg-info">
+                        <i class="fa fa-users"></i>
+                    </div>
+
+                    <h2 class="counter text-info">
+                        <span data-toggle="counter-up">440</span>
+                    </h2>
+
+                    <p>
+                        Individuals have benefited from mentorship, counselling,
+                        guidance and psychosocial support.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{{ route('getinvolved') }}" class="btn btn-primary btn-lg rounded-pill px-5 py-3">
+                Get Involved
+            </a>
+        </div>
+
+    </div>
+</section>
