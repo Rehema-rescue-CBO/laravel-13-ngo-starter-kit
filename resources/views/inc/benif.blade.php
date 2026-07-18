@@ -20,7 +20,7 @@
                                    
                                      <i class="fa fa-hands-holding-child fa-2x text-secondary"></i>
                                 </div>
-                                <h3>Orphans and Vulnerable Children:</h3>
+                                <h3 class="text-secondary">Orphans and Vulnerable Children:</h3>
                                 <p class="mb-2">Orphans, teen mothers and fathers, children of very poor
                                     households.</p>
                                 {{--  <a href="">Read More</a> --}}
@@ -31,7 +31,7 @@
                                 <div class="btn-square bg-light mb-4">
                                     <i class="fa fa-hospital fa-2x text-secondary"></i>
                                 </div>
-                                <h3>Children with Special Needs:</h3>
+                                <h3 class="text-secondary">Children with Special Needs:</h3>
                                 <p class="mb-2">Children/ Persons Living with Disabilities, Autistic, Special
                                     children{{--  --}}.</p>
                                 {{--  <a href="">Read More</a> --}}
@@ -42,7 +42,7 @@
                                 <div class="btn-square bg-light mb-4">
                                    <i class="fa-solid fa-syringe fa-2x text-secondary"></i>
                                 </div>
-                                <h3>Chronically Sick:</h3>
+                                <h3 class="text-secondary">Chronically Sick:</h3>
                                 <p class="mb-2">People living with HIV/ AIDS.</p>
                                 {{--  <a href="">Read More</a> --}}
                             </div>
@@ -52,7 +52,7 @@
                                 <div class="btn-square bg-light mb-4">
                                   <i class="fa-solid fa-pills fa-2x text-secondary"></i>
                                 </div>
-                                <h3>Drugs and Substance Abuse Victims:</h3>
+                                <h3 class="text-secondary">Drugs and Substance Abuse Victims:</h3>
                                 <p class="mb-2">Drug and alcohol addicts.</p>
                                 {{--  <a href="">Read More</a> --}}
                             </div>
@@ -62,7 +62,7 @@
                                 <div class="btn-square bg-light mb-4">
                                     <i class="fa-solid fa-person-dress fa-2x text-secondary"></i>
                                 </div>
-                                <h3>Victims of SGBV:</h3>
+                                <h3 class="text-secondary">Victims of SGBV:</h3>
                                 <p class="mb-2">Children and youths who are faced with sexual and gender based violence;
                                     physical and mental.</p>
                                 {{--  <a href="">Read More</a> --}}
@@ -73,7 +73,7 @@
                                 <div class="btn-square bg-light mb-4">
                                     <i class="fa fa-home fa-2x text-secondary"></i>
                                 </div>
-                                <h3>Victims of Neglect: </h3>
+                                <h3 class="text-secondary">Victims of Neglect: </h3>
                                 <p class="mb-2">Teen mothers and fathers, the elderly and marginalized communities.</p>
                                 {{-- <a href="">Read More</a> --}}
                             </div>

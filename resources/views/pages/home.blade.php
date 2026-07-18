@@ -11,9 +11,10 @@
             </div>
         </div>
     @endif
-   @include('inc.slider')
     @include('inc.aboutHome')
+     {{-- what we do --}}
 
+    
     @include('inc.counter')
     {{-- @include('inc.video') --}}
     @include('inc.benif')

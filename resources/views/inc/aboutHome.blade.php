@@ -208,17 +208,7 @@
 
         <div class="row g-5 align-items-center">
 
-            <!-- Left Side: Image -->
-
-            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-
-                <div class="about-img-wrapper">
-
-                    <img src="{{ asset('inc/whatwedo.jpg') }}" alt="About Us">
-
-                </div>
-
-            </div>
+          
 
 
             <!-- Right Side: Content -->
@@ -227,8 +217,7 @@
 
                 <div class="about-text-card">
 
-                    <span class="text-secondary fw-bold text-uppercase tracking-wider mb-2 d-inline-block">About
-                        Us</span>
+                    <span class="text-secondary fw-bold text-uppercase tracking-wider mb-2 d-inline-block">Rehema Rescue CBO</span>
 
                     <h2 class="display-6 text-dark mb-4 fw-bold">Who We Are</h2>
 
@@ -258,6 +247,17 @@
                 </div>
 
             </div>
+              <!-- Left Side: Image -->
+
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+
+                <div class="about-img-wrapper">
+
+                    <img src="{{ asset('inc/whatwedo.jpg') }}" alt="About Us">
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -281,10 +281,9 @@
 
                 <div class="value-card-modern">
 
-                    <span
-                        class="text-secondary fw-bold text-uppercase tracking-wider mb-2 d-inline-block">Principles</span>
+                
 
-                    <h3 class="text-dark mb-4 fw-bold" style="font-size: 2rem;">Our Core Values</h3>
+                    <h3 class="text-secondary  mb-4 fw-bold" style="font-size: 2rem;">Our Core Values</h3>
 
                     <p class="text-muted mb-4">Our principles are pillared on:</p>
 
@@ -371,10 +370,10 @@
 
                     </p>
 
-                    <a class="btn btn-light text-primary py-3 px-5 rounded-pill fw-bold" href="#our-mission"
+                    <a class="btn btn-light text-primary py-3 px-5 rounded-pill fw-bold" href="{{ route('programs') }}"
                         style="font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
 
-                        Our Vision <i class="fa fa-arrow-right ms-2"></i>
+                        Our Programs <i class="fa fa-arrow-right ms-2"></i>
 
                     </a>
 

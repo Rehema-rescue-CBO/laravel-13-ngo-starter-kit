@@ -1,5 +1,28 @@
 @extends('layouts.base')
 @section('content')
+ <style>
+        .partner-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: .5rem;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+        .partner-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .partner-item img {
+            max-height: 120px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+    </style>
     @include('layouts.pageheader')
        <div class="container-fluid py-5">
         <div class="container">
@@ -94,27 +117,5 @@
             </div>
         </div>
     </div>
-    <style>
-        .partner-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            background-color: #ffffff;
-            border-radius: .5rem;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #f0f0f0;
-        }
-        .partner-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-        .partner-item img {
-            max-height: 120px;
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-        }
-    </style>
+   
 @endsection
