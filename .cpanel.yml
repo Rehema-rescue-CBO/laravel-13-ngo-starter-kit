@@ -1,0 +1,8 @@
+---
+deploy:
+  - branch: main
+    target: /home3/rehemare/public_html
+    config:
+      - name: deploy
+        value: true
+    
