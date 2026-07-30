@@ -1,0 +1,28 @@
+---
+deployment:
+  tasks:
+    # -----------------------------------------------------------------
+    # | IMPORTANT:                                                    |
+    # | This file assumes your cPanel Git repository is set to deploy |
+    # | directly into your Laravel project's root directory.          |
+    # |                                                               |
+    # | The document root for your domain in cPanel should be pointed |
+    # | to the `/public` subdirectory of this repository.             |
+    # -----------------------------------------------------------------
+
+    # Install PHP dependencies without dev packages
+    - /usr/local/bin/composer install --no-dev --optimize-autoloader
+
+    # Install Node.js dependencies
+    # - /bin/npm install
+
+    # Build frontend assets for production
+    # - /bin/npm run build
+
+    # Run database migrations (the --force flag is important in production)
+    - /usr/local/bin/php artisan migrate --force
+
+    # Optimize for production by caching configuration, routes, and views
+    - /usr/local/bin/php artisan config:cache
+    - /usr/local/bin/php artisan route:cache
+    - /usr/local/bin/php artisan view:cache
