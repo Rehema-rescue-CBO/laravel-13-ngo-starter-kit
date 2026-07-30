@@ -140,6 +140,13 @@
                                 <!-- Content -->
                                 <p class="card-text text-muted mb-4 flex-grow-1">
                                     {{ \Illuminate\Support\Str::limit(strip_tags($program->content), 150) }}
+                                    {{-- add hover effect to the read more link --}}
+                                    <style>
+                                        .text-primary:hover {
+                                            color: #001ac3 !important;
+                                        }
+                                    </style>
+                                    <a href="{{ route('programs.show', $program) }}" class="text-primary">Read More</a>
                                 </p>
 
                                 <!-- Support Button -->
