@@ -30,11 +30,11 @@
 
         width: 100%;
 
-        height: 100%;
+        height: 100%; 
 
-        object-fit: cover;
+        object-fit: contain;
 
-        transition: transform 0.5s ease;
+        transition: transform 0.4s ease-in-out;
 
     }
 
