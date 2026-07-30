@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-secondary py-3 w-100" type="submit">Volunteer</button>
+                                        <button class="btn btn-secondary py-3 w-100" type="submit">Partner</button>
                                     </div>
                                 </div>
                             </form>

@@ -55,6 +55,9 @@ $config = [
     <!-- Template Stylesheet -->
     <link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet">
 
+    {{-- Stack for page/partial-specific styles --}}
+    @stack('styles')
+
     {{-- css Overwrite --}}
     <style>
         .btn-secondary {
