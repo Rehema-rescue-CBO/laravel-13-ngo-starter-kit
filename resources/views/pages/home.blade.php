@@ -13,7 +13,7 @@
     @endif
     @include('inc.aboutHome')
      {{-- what we do --}}
-
+    @include('inc.slider')
     
     @include('inc.counter')
     {{-- @include('inc.video') --}}

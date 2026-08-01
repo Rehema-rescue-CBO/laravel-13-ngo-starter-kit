@@ -1,98 +1,98 @@
 <style>
     /* Attractive section background */
-.impact-section{
-    background: linear-gradient(135deg,#eef8ff 0%,#f8fbff 50%,#e9fff4 100%);
-    position: relative;
-    overflow: hidden;
-}
+    .impact-section {
+        background: linear-gradient(135deg, #eef8ff 0%, #f8fbff 50%, #e9fff4 100%);
+        position: relative;
+        overflow: hidden;
+    }
 
-.impact-section::before{
-    content:"";
-    position:absolute;
-    width:320px;
-    height:320px;
-    background:rgba(13,110,253,.08);
-    border-radius:50%;
-    top:-120px;
-    left:-120px;
-}
+    .impact-section::before {
+        content: "";
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        background: rgba(13, 110, 253, .08);
+        border-radius: 50%;
+        top: -120px;
+        left: -120px;
+    }
 
-.impact-section::after{
-    content:"";
-    position:absolute;
-    width:280px;
-    height:280px;
-    background:rgba(25,135,84,.08);
-    border-radius:50%;
-    bottom:-100px;
-    right:-100px;
-}
+    .impact-section::after {
+        content: "";
+        position: absolute;
+        width: 280px;
+        height: 280px;
+        background: rgba(25, 135, 84, .08);
+        border-radius: 50%;
+        bottom: -100px;
+        right: -100px;
+    }
 
-/* Card */
-.impact-card{
-    position:relative;
-    background:#fff;
-    border-radius:18px;
-    padding:40px 25px;
-    height:100%;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-    transition:all .35s ease;
-    z-index:2;
-}
+    /* Card */
+    .impact-card {
+        position: relative;
+        background: #fff;
+        border-radius: 18px;
+        padding: 40px 25px;
+        height: 100%;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+        transition: all .35s ease;
+        z-index: 2;
+    }
 
-.impact-card:hover{
-    transform:translateY(-12px);
-    box-shadow:0 20px 45px rgba(13,110,253,.18);
-}
+    .impact-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 45px rgba(13, 110, 253, .18);
+    }
 
-/* Top border animation */
-.impact-card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:0;
-    height:5px;
-    background:#0d6efd;
-    border-radius:10px;
-    transition:.4s;
-}
+    /* Top border animation */
+    .impact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 5px;
+        background: #0d6efd;
+        border-radius: 10px;
+        transition: .4s;
+    }
 
-.impact-card:hover::before{
-    width:100%;
-}
+    .impact-card:hover::before {
+        width: 100%;
+    }
 
-/* Icon */
-.icon-box{
-    width:85px;
-    height:85px;
-    margin:0 auto 25px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#fff;
-    font-size:34px;
-    transition:.35s;
-}
+    /* Icon */
+    .icon-box {
+        width: 85px;
+        height: 85px;
+        margin: 0 auto 25px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 34px;
+        transition: .35s;
+    }
 
-.impact-card:hover .icon-box{
-    transform:rotate(10deg) scale(1.1);
-}
+    .impact-card:hover .icon-box {
+        transform: rotate(10deg) scale(1.1);
+    }
 
-.counter{
-    font-size:3rem;
-    font-weight:700;
-    margin-bottom:20px;
-}
+    .counter {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
 
-.impact-card p{
-    color:#6c757d;
-    line-height:1.8;
-    margin-bottom:0;
-    font-size:15px;
-}
+    .impact-card p {
+        color: #6c757d;
+        line-height: 1.8;
+        margin-bottom: 0;
+        font-size: 15px;
+    }
 </style>
 
 
@@ -194,11 +194,10 @@
 
         </div>
 
-        <div class="text-center mt-5">
+        <div class="text-center mt-5" id="what-we-do">
             <a href="{{ route('getinvolved') }}" class="btn btn-primary btn-lg rounded-pill px-5 py-3">
                 Get Involved
             </a>
         </div>
-
     </div>
 </section>
